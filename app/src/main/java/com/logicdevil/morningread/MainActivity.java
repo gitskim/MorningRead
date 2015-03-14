@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.logicdevil.morningread.api.controller.BaseController;
+import com.logicdevil.morningread.api.controller.RedditController;
+
 
 public class MainActivity extends ActionBarActivity {
-
+    private RedditController mRedditController = RedditController.getsInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mRedditController.fetchRedditArticles();
     }
 
 
