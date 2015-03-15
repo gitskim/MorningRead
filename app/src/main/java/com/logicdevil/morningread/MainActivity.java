@@ -1,16 +1,28 @@
 package com.logicdevil.morningread;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import com.logicdevil.morningread.api.controller.BaseController;
+import com.logicdevil.morningread.api.cache.RedditCache;
 import com.logicdevil.morningread.api.controller.RedditController;
+import com.logicdevil.morningread.api.events.FetchedArticlesEvent;
+import com.logicdevil.morningread.api.response.Response4Content;
+
+import butterknife.InjectView;
 
 
 public class MainActivity extends ActionBarActivity {
-    private RedditController mRedditController = RedditController.getsInstance();
+    @InjectView(R.id.id_text_view)
+    protected TextView mTextView;
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static RedditController mRedditController = RedditController.getsInstance();
+    private static RedditCache mRedditCache = RedditCache.getsInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,4 +52,19 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //region EventBus
+    @SuppressWarnings("UnusedDeclaration")
+    public void onEventMainThread(FetchedArticlesEvent event) {
+        //TODO: hideLaoding as well as showLoading
+        if (event.isSuccess()) {
+            Log.d(TAG, "event success");
+            Response4Content response4Content = mRedditCache.loadResponse();
+                mTextView.setText(response4Content.getDomain());
+        } else {
+            Log.d(TAG, "could not get response 4");
+        }
+
+    }
+    //endregion
 }

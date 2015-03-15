@@ -1,21 +1,25 @@
 package com.logicdevil.morningread.api.response;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.List;
 
 /**
  * Created by suhyunkim on 3/14/15.
  */
-public class Response1 extends BaseResponse {
-    private String data;
-    private List<Response2> response2;
-    public String getData() {
+public class Response2Children {
+
+    @Expose
+    private Response3Data data;
+
+    public Response3Data getData() {
         return data;
     }
 
     @Override
     public String toString() {
-        return "Response1{" +
-                "data='" + data + '\'' +
+        return "Response2Children{" +
+                "data=" + data +
                 '}';
     }
 
@@ -24,9 +28,9 @@ public class Response1 extends BaseResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Response1 response1 = (Response1) o;
+        Response2Children that = (Response2Children) o;
 
-        if (data != null ? !data.equals(response1.data) : response1.data != null) return false;
+        if (data != null ? !data.equals(that.data) : that.data != null) return false;
 
         return true;
     }

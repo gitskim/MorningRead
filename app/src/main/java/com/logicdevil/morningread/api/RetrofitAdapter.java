@@ -18,10 +18,9 @@ public class RetrofitAdapter {
 
 
     public static RestAdapter buildRestAdapter() {
-        return (RestAdapter) new RestAdapter.Builder()
+        return new RestAdapter.Builder()
                 .setEndpoint(Config.END_POINT)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build()
-                .create(APIRequests.class);
+                .build();
     }
 }
