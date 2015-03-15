@@ -2,7 +2,7 @@ package com.logicdevil.morningread.api.controller;
 
 import android.util.Log;
 
-import com.logicdevil.morningread.api.response.Reddit;
+import com.logicdevil.morningread.api.response.Response1;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -25,10 +25,10 @@ public class RedditController extends BaseController {
     public void fetchRedditArticles() {
         Log.d(TAG, "reddit fetch ran");
 
-        getAPIRequest().fetchNewReddits(new Callback<Reddit>() {
+        getAPIRequest().fetchNewReddits(new Callback<Response1>() {
 
             @Override
-            public void success(Reddit reddit, Response response) {
+            public void success(Response1 reddit, Response response) {
                 Log.d(TAG, "reddit fetch success");
             }
 

@@ -1,6 +1,6 @@
 package com.logicdevil.morningread.api.requests;
 
-import com.logicdevil.morningread.api.response.Reddit;
+import com.logicdevil.morningread.api.response.Response1;
 
 import retrofit.Callback;
 import retrofit.http.GET;
@@ -11,5 +11,5 @@ import retrofit.http.GET;
 public interface APIRequests {
     @GET("/.json")
     void fetchNewReddits(
-            Callback<Reddit> cb);
+            Callback<Response1> cb);
 }

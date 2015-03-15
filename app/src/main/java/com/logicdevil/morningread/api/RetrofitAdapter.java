@@ -9,15 +9,19 @@ import retrofit.RestAdapter;
  * Created by suhyunkim on 3/14/15.
  */
 public class RetrofitAdapter {
+//    APIRequests service = RestAdapter.create(APIRequests.class);
+
     RestAdapter restAdapter = new RestAdapter.Builder()
             .setEndpoint(Config.END_POINT)
+            .setLogLevel(RestAdapter.LogLevel.FULL)
             .build();
 
-    APIRequests service = restAdapter.create(APIRequests.class);
 
     public static RestAdapter buildRestAdapter() {
-        return new RestAdapter.Builder()
+        return (RestAdapter) new RestAdapter.Builder()
                 .setEndpoint(Config.END_POINT)
-                .build();
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build()
+                .create(APIRequests.class);
     }
 }
