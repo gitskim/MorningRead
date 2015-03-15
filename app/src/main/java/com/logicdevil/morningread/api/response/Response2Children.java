@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by suhyunkim on 3/14/15.
  */
-public class Response2Children {
+public class Response2Children extends BaseResponse{
 
     @Expose
     private Response3Data data;

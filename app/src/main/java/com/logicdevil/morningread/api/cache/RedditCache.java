@@ -16,7 +16,7 @@ public class RedditCache {
 
     private static RedditCache sInstance;
 
-    List<Response0> cacheList = new ArrayList<>();
+    Response0 cacheList = new Response0();
 
     public static RedditCache getsInstance() {
         if (sInstance == null) {
@@ -28,18 +28,24 @@ public class RedditCache {
     //TODO: change the for loop to for each
     public void saveRedditResponse(Response0 list) {
         Log.d(TAG, "response saved");
-        cacheList.add(list);
+        cacheList = list;
+//        cacheList.add(list);
     }
 
-    public Response4Content loadResponse() {
-        Log.d(TAG, "response loading");
-        Response4Content redditContent = new Response4Content();
-        for (int i = 0; i<cacheList.get(0).getData().getChildren().size(); i++) {
-            redditContent = cacheList.get(0).getData().getChildren().get(i).getData().getContent();
-            Log.d(TAG, "the first item in teh child is: " + cacheList.get(0).getData().getChildren().get(i));
-            Log.d(TAG, "the domain in the for loop is: " + cacheList.get(0).getData().getChildren().get(i).getData().getContent().getDomain());
+//    public Response4Content loadResponse() {
+//        Log.d(TAG, "response loading");
+//        Response4Content redditContent = new Response4Content();
+//        for (int i = 0; i<cacheList.get(0).getData().getChildren().size(); i++) {
+//            redditContent = cacheList.get(0).getData().getChildren().get(i).getData().getContent();
+//            Log.d(TAG, "the first item in teh child is: " + cacheList.get(0).getData().getChildren().get(i));
+//            Log.d(TAG, "the domain in the for loop is: " + cacheList.get(0).getData().getChildren().get(i).getData().getContent().getDomain());
+//
+//        }
+//        return redditContent;
+//    }
 
-        }
-        return redditContent;
+    public Response0 loadResponse() {
+                Log.d(TAG, "event reddit response loading");
+        return cacheList;
     }
 }

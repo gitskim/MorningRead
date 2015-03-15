@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose;
 /**
  * Created by suhyunkim on 3/15/15.
  */
-public class Response4Content {
+public class Response4Content extends BaseResponse{
     @Expose
     private String domain;
 

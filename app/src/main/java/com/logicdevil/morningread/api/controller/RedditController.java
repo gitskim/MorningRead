@@ -3,6 +3,7 @@ package com.logicdevil.morningread.api.controller;
 import android.util.Log;
 
 import com.logicdevil.morningread.api.cache.RedditCache;
+import com.logicdevil.morningread.api.events.FetchedArticlesEvent;
 import com.logicdevil.morningread.api.response.Response0;
 import com.logicdevil.morningread.api.response.Response1Data;
 
@@ -33,6 +34,7 @@ public class RedditController extends BaseController {
             @Override
             public void success(Response0 reddit, Response response) {
                 Log.d(TAG, "reddit fetch success");
+                mEventBus.post(new FetchedArticlesEvent(true));
                 sRedditCache.saveRedditResponse(reddit);
             }
 
