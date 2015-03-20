@@ -5,14 +5,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.logicdevil.morningread.api.cache.RedditCache;
 import com.logicdevil.morningread.api.controller.RedditController;
 import com.logicdevil.morningread.api.events.FetchedArticlesEvent;
 import com.logicdevil.morningread.api.response.Response0;
-import com.logicdevil.morningread.api.response.Response4Content;
 
 import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
@@ -25,14 +23,14 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static RedditController mRedditController = RedditController.getsInstance();
     private static RedditCache mRedditCache = RedditCache.getsInstance();
-    private EventBus mFetchedArticlesEvent = EventBus.getDefault();
+    private EventBus mEventBus = EventBus.getDefault();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRedditController.fetchRedditArticles();
         try {
-            mFetchedArticlesEvent.register(this);
+            mEventBus.register(this);
             Log.d(TAG, "event bus successfully regiesterd");
         }catch (EventBusException e) {
             Log.d(TAG, "Event bus did not work");
