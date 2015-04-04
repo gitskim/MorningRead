@@ -34,8 +34,8 @@ public class RedditController extends BaseController {
             @Override
             public void success(Response0 reddit, Response response) {
                 Log.d(TAG, "reddit fetch success");
-                mEventBus.post(new FetchedArticlesEvent(true));
                 sRedditCache.saveRedditResponse(reddit);
+                mEventBus.post(new FetchedArticlesEvent(true));
             }
 
             @Override
