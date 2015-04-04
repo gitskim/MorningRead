@@ -1,13 +1,9 @@
 package com.logicdevil.morningread.api.response;
 
-import com.google.gson.annotations.Expose;
-
-import java.util.List;
-
 /**
  * Created by suhyunkim on 3/15/15.
  */
-public class Response3Data extends BaseResponse{
+public class ChildrenData extends BaseResponse{
 
     String domain;
 
@@ -27,7 +23,7 @@ public class Response3Data extends BaseResponse{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Response3Data that = (Response3Data) o;
+        ChildrenData that = (ChildrenData) o;
 
         if (domain != null ? !domain.equals(that.domain) : that.domain != null) return false;
 

@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * Created by suhyunkim on 3/14/15.
  */
-public class Response1Data extends BaseResponse {
+public class Data extends BaseResponse {
     @Expose
-    private List<Response2Children> children = new ArrayList<>();
+    private List<Children> children = new ArrayList<>();
 
     @Expose
     private String after;
@@ -18,7 +18,7 @@ public class Response1Data extends BaseResponse {
     @Expose
     private String before;
 
-    public List<Response2Children> getChildren() {
+    public List<Children> getChildren() {
         return children;
     }
 
@@ -44,7 +44,7 @@ public class Response1Data extends BaseResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Response1Data that = (Response1Data) o;
+        Data that = (Data) o;
 
         if (after != null ? !after.equals(that.after) : that.after != null) return false;
         if (before != null ? !before.equals(that.before) : that.before != null) return false;

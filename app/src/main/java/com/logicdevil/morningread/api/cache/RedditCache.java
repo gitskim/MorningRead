@@ -2,11 +2,7 @@ package com.logicdevil.morningread.api.cache;
 
 import android.util.Log;
 
-import com.logicdevil.morningread.api.response.Response0;
-import com.logicdevil.morningread.api.response.Response4Content;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.logicdevil.morningread.api.response.Listing;
 
 /**
  * Created by suhyunkim on 3/15/15.
@@ -16,7 +12,7 @@ public class RedditCache {
 
     private static RedditCache sInstance;
 
-    Response0 cacheList = new Response0();
+    Listing cacheList = new Listing();
 
     public static RedditCache getsInstance() {
         if (sInstance == null) {
@@ -26,7 +22,7 @@ public class RedditCache {
     }
 
     //TODO: change the for loop to for each
-    public void saveRedditResponse(Response0 list) {
+    public void saveRedditResponse(Listing list) {
         Log.d(TAG, "response saved");
         cacheList = list;
 //        cacheList.add(list);
@@ -44,7 +40,7 @@ public class RedditCache {
 //        return redditContent;
 //    }
 
-    public Response0 loadResponse() {
+    public Listing loadResponse() {
                 Log.d(TAG, "event reddit response loading");
         return cacheList;
     }

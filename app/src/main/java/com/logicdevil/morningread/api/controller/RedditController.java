@@ -4,8 +4,7 @@ import android.util.Log;
 
 import com.logicdevil.morningread.api.cache.RedditCache;
 import com.logicdevil.morningread.api.events.FetchedArticlesEvent;
-import com.logicdevil.morningread.api.response.Response0;
-import com.logicdevil.morningread.api.response.Response1Data;
+import com.logicdevil.morningread.api.response.Listing;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -29,10 +28,10 @@ public class RedditController extends BaseController {
     public void fetchRedditArticles() {
         Log.d(TAG, "reddit fetch ran");
 
-        getAPIRequest().fetchNewReddits(new Callback<Response0>() {
+        getAPIRequest().fetchNewReddits(new Callback<Listing>() {
 
             @Override
-            public void success(Response0 reddit, Response response) {
+            public void success(Listing reddit, Response response) {
                 Log.d(TAG, "reddit fetch success");
                 sRedditCache.saveRedditResponse(reddit);
                 mEventBus.post(new FetchedArticlesEvent(true));

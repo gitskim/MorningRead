@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.logicdevil.morningread.api.cache.RedditCache;
 import com.logicdevil.morningread.api.controller.RedditController;
 import com.logicdevil.morningread.api.events.FetchedArticlesEvent;
-import com.logicdevil.morningread.api.response.Response0;
+import com.logicdevil.morningread.api.response.Listing;
 
 import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
@@ -72,11 +72,11 @@ public class MainActivity extends ActionBarActivity {
         if (event.isSuccess()) {
             Log.d(TAG, "event success");
 //            Response4Content response4Content = mRedditCache.loadResponse();
-            Response0 response0 = mRedditCache.loadResponse();
-            Log.d(TAG, " event"+ response0);
-            Log.d(TAG, " event"+ response0.getData());
-            Log.d(TAG, " event"+ response0.getData().getChildren());
-            Log.d(TAG, " event"+ response0.getData().getChildren().size());
+            Listing listing = mRedditCache.loadResponse();
+            Log.d(TAG, " event"+ listing);
+            Log.d(TAG, " event"+ listing.getData());
+            Log.d(TAG, " event"+ listing.getData().getChildren());
+            Log.d(TAG, " event"+ listing.getData().getChildren().size());
 
 //            for (int i = 0 ; i<response0.getData().getChildren().size(); i++) {
 //                String response4Content = response0.getData().getChildren().get(i).getData().getContent().getDomain();
